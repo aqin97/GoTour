@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"GoTour/internal/timer"
+	"GoTour/commandlinetool/internal/timer"
 	"log"
 	"strconv"
 	"strings"

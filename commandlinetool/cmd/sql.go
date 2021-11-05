@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"GoTour/internal/sql2struct"
+	"GoTour/commandlinetool/internal/sql2struct"
 	"log"
 
 	"github.com/spf13/cobra"

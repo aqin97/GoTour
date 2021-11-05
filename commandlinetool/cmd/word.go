@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"GoTour/internal/word"
+	"GoTour/commandlinetool/internal/word"
 	"log"
 	"strings"
 
