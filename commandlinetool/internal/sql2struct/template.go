@@ -1,7 +1,7 @@
 package sql2struct
 
 import (
-	"GoTour/internal/word"
+	"GoTour/commandlinetool/internal/word"
 	"fmt"
 	"os"
 	"text/template"
