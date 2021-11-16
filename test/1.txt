@@ -1,0 +1,1 @@
+go run .\main.go sql struct -u root -p 19970530Zfq. -n DB4GoTour -T blog_tag
