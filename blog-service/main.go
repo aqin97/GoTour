@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/aqin97/GoTour/blog-service/global"
+	"github.com/aqin97/GoTour/blog-service/internal/model"
 	"github.com/aqin97/GoTour/blog-service/internal/routers"
 	"github.com/aqin97/GoTour/blog-service/pkg/setting"
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,10 @@ func init() {
 	err := setupSetting()
 	if err != nil {
 		log.Fatalf("init.setupSetting err: %v", err)
+	}
+	err = setupDBEngine()
+	if err != nil {
+		log.Fatalf("init.setupDBEngine err: %v", err)
 	}
 }
 
@@ -51,5 +56,14 @@ func setupSetting() error {
 	}
 	global.ServerSetting.ReadTimeOut *= time.Second
 	global.ServerSetting.WriteTimeOut *= time.Second
+	return nil
+}
+
+func setupDBEngine() error {
+	var err error
+	global.DBEngine, err = model.NewDBEngine(global.DatabaseSetting)
+	if err != nil {
+		return err
+	}
 	return nil
 }
