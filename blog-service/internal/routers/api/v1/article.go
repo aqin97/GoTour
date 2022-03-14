@@ -1,7 +1,11 @@
 //article的处理函数
 package v1
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/aqin97/GoTour/blog-service/pkg/app"
+	"github.com/aqin97/GoTour/blog-service/pkg/errcode"
+	"github.com/gin-gonic/gin"
+)
 
 type Article struct{}
 
@@ -10,7 +14,7 @@ func NewArticle() Article {
 }
 
 func (a Article) Get(c *gin.Context) {
-
+	app.NewResponse(c).ToErrorResponse(errcode.ServerError)
 }
 
 func (a Article) List(c *gin.Context) {
