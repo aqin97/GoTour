@@ -8,8 +8,10 @@ import (
 	"github.com/aqin97/GoTour/blog-service/global"
 	"github.com/aqin97/GoTour/blog-service/internal/model"
 	"github.com/aqin97/GoTour/blog-service/internal/routers"
+	"github.com/aqin97/GoTour/blog-service/pkg/logger"
 	"github.com/aqin97/GoTour/blog-service/pkg/setting"
 	"github.com/gin-gonic/gin"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 func init() {
@@ -20,6 +22,10 @@ func init() {
 	err = setupDBEngine()
 	if err != nil {
 		log.Fatalf("init.setupDBEngine err: %v", err)
+	}
+	err = setupLogger()
+	if err != nil {
+		log.Fatalf("init.setupLogger err: %v", err)
 	}
 }
 
@@ -33,7 +39,7 @@ func main() {
 		WriteTimeout:   global.ServerSetting.WriteTimeOut,
 		MaxHeaderBytes: 1 << 20,
 	}
-
+	global.Logger.Infof("%s: gotour/%s", "zfq", "blog")
 	server.ListenAndServe()
 }
 
@@ -65,5 +71,16 @@ func setupDBEngine() error {
 	if err != nil {
 		return err
 	}
+	return nil
+}
+
+func setupLogger() error {
+	filename := global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + global.AppSetting.LogFileExt
+	global.Logger = logger.NewLogger(&lumberjack.Logger{
+		Filename:  filename,
+		MaxSize:   600,
+		MaxAge:    10,
+		LocalTime: true,
+	}, "", log.LstdFlags).WithCaller(2)
 	return nil
 }
