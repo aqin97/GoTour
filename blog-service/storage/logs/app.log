@@ -1,2 +1,3 @@
 2022/03/14 16:32:34 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1647246754039352300}
 2022/03/14 19:04:48 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1647255888603945300}
+2022/03/14 19:41:59 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1647258119440051600}

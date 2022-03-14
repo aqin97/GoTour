@@ -29,6 +29,10 @@ func init() {
 	}
 }
 
+// @title 博客系统
+// @version 1.0
+// @description go编程之旅自学
+// @termsOfService https://github.com/aqin97
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouter()
