@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/aqin97/GoTour/blog-service/global"
 	"github.com/aqin97/GoTour/blog-service/pkg/setting"
@@ -36,4 +37,71 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	db.DB().SetMaxOpenConns(databaseSetting.MaxOpenConns)
 
 	return db, nil
+}
+
+//对公共字段的处理，难道要在每一个DB操作中进行设置和修改吗？
+//如果每个DB都设置公共字段值，那不仅多了很多重复代码，而且调整公共字段时工作量也会增加
+//可以采用model callback的方式实现对公共字段的处理
+//gorm支持的回调：注册新的回调，删除现有回调，替换现有回调，注册回调的先后顺序
+
+func updateTimeStampForCreateCallBack(scope *gorm.Scope) {
+	if !scope.HasError() {
+		nowTime := time.Now().Unix()
+		if createTimeField, ok := scope.FieldByName("CreatedOn"); ok {
+			if createTimeField.IsBlank {
+				_ = createTimeField.Set(nowTime)
+			}
+		}
+
+		if modifyTimeField, ok := scope.FieldByName("ModifiedOn"); ok {
+			if modifyTimeField.IsBlank {
+				_ = modifyTimeField.Set(nowTime)
+			}
+		}
+	}
+}
+
+func updateTimeStampForUpdateCallBack(scope *gorm.Scope) {
+	if _, ok := scope.Get("gorm:update_column"); !ok {
+		_ = scope.SetColumn("ModifiedOn", time.Now().Unix())
+	}
+}
+
+func deleteCallBack(scope *gorm.Scope) {
+	if !scope.HasError() {
+		var extraOption string
+		if str, ok := scope.Get("gorm:delete_option"); ok {
+			extraOption = fmt.Sprint(str)
+		}
+
+		deletedOnField, hasDeletedOnField := scope.FieldByName("DeleteOn")
+		isDelField, hasIsDelField := scope.FieldByName("IsDel")
+		if !scope.Search.Unscoped && hasDeletedOnField && hasIsDelField {
+			now := time.Now().Unix()
+			scope.Raw(fmt.Sprintf(
+				"UPDATE %v SET %v=%v, %v=%v%v%v",
+				scope.QuotedTableName(),
+				scope.Quote(deletedOnField.DBName),
+				scope.AddToVars(now),
+				scope.Quote(isDelField.DBName),
+				scope.AddToVars(1),
+				addExtraSpaceIfExist(scope.CombinedConditionSql()),
+				addExtraSpaceIfExist(extraOption),
+			)).Exec()
+		} else {
+			scope.Raw(fmt.Sprintf(
+				"DELETE FROM %v%v%v",
+				scope.QuotedTableName(),
+				addExtraSpaceIfExist(scope.CombinedConditionSql()),
+				addExtraSpaceIfExist(extraOption),
+			)).Exec()
+		}
+	}
+}
+
+func addExtraSpaceIfExist(str string) string {
+	if str != "" {
+		return " " + str
+	}
+	return ""
 }
