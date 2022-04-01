@@ -1,3 +1,5 @@
 2022/03/14 16:32:34 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1647246754039352300}
 2022/03/14 19:04:48 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1647255888603945300}
 2022/03/14 19:41:59 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1647258119440051600}
+2022/03/31 20:48:55 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648730935419091300}
+2022/03/31 20:51:42 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1648731102604641100}

@@ -1,7 +1,12 @@
 //tag的处理函数
 package v1
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/aqin97/GoTour/blog-service/global"
+	"github.com/aqin97/GoTour/blog-service/pkg/app"
+	"github.com/aqin97/GoTour/blog-service/pkg/errcode"
+	"github.com/gin-gonic/gin"
+)
 
 type Tag struct{}
 
@@ -24,7 +29,19 @@ func (t Tag) Get(c *gin.Context) {
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/tags [get]
 func (t Tag) List(c *gin.Context) {
-
+	params := struct {
+		Name  string `form:"name" binging:"max=100"`
+		State uint8  `form:"state,default" binding:"oneof=0 1"`
+	}{}
+	response := app.NewResponse(c)
+	valid, errs := app.BindAndValid(c, &params)
+	if !valid {
+		global.Logger.Errorf("app.BindAndValid errs: %v", errs)
+		errRsp := errcode.InvalidParams.WithDetails(errs.Errors()...)
+		response.ToErrorResponse(errRsp)
+		return
+	}
+	response.ToResponse(gin.H{})
 }
 
 // @Summary 新增标签
