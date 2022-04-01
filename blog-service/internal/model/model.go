@@ -33,13 +33,13 @@ func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 		db.LogMode(true)
 	}
 	db.SingularTable(true)
+	//注册回调行为
 	db.Callback().Create().Replace("gorm:update_time_stamp", updateTimeStampForCreateCallBack)
 	db.Callback().Create().Replace("gorm:update_time_stamp", updateTimeStampForUpdateCallBack)
 	db.Callback().Delete().Replace("gorm:delete", deleteCallBack)
+
 	db.DB().SetMaxIdleConns(databaseSetting.MaxIdleConns)
 	db.DB().SetMaxOpenConns(databaseSetting.MaxOpenConns)
-
-	//注册回调行为
 
 	return db, nil
 }
@@ -108,5 +108,5 @@ func addExtraSpaceIfExist(str string) string {
 	if str != "" {
 		return " " + str
 	}
-	return "A"
+	return ""
 }

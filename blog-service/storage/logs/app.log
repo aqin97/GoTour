@@ -3,3 +3,21 @@
 2022/03/14 19:41:59 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1647258119440051600}
 2022/03/31 20:48:55 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648730935419091300}
 2022/03/31 20:51:42 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":1648731102604641100}
+2022/04/01 16:16:45 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648801005010947700}
+2022/04/01 16:19:26 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: Name长度必须至少为3个字符","time":1648801166040442200}
+2022/04/01 16:20:00 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"svc.CreateTag err: Error 1146: Table 'blog_service.blod_tag' doesn't exist","time":1648801200708222100}
+2022/04/01 16:25:38 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648801538241445400}
+2022/04/01 16:29:41 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"svc.DeleteTag err: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'A' at line 1","time":1648801781294546700}
+2022/04/01 16:30:03 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"svc.DeleteTag err: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'A' at line 1","time":1648801803011320700}
+2022/04/01 16:33:04 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"svc.DeleteTag err: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'A' at line 1","time":1648801984394096100}
+2022/04/01 16:36:51 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648802211175463800}
+2022/04/01 16:36:57 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"svc.DeleteTag err: Error 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'A' at line 1","time":1648802217142865400}
+2022/04/01 16:37:15 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648802235279509100}
+2022/04/01 16:39:43 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648802383950615500}
+2022/04/01 16:43:01 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: Name长度必须至少为3个字符","time":1648802581310183700}
+2022/04/01 16:54:42 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648803282274465700}
+2022/04/01 16:54:47 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: Name长度必须至少为3个字符","time":1648803287302452600}
+2022/04/01 16:55:01 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: Name长度必须至少为3个字符","time":1648803301006279700}
+2022/04/01 16:56:56 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"info","message":"zfq: gotour/blog","time":1648803416749340300}
+2022/04/01 16:57:01 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: Name长度必须至少为3个字符","time":1648803421904602900}
+2022/04/01 16:57:28 {"callers":["E:/GoPath/src/GoTour/blog-service/main.go: 26 main.init.0"],"level":"error","message":"app.BindAndValid errs: Name长度必须至少为3个字符","time":1648803448049527900}
